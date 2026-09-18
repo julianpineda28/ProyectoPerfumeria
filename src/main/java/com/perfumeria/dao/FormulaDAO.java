@@ -13,7 +13,7 @@ import java.util.List;
 public class FormulaDAO {
 
     public void insertar(Formula formula) throws SQLException {
-        String sql = "INSERT INTO Formula (NombreFormula, Version, FechaCreacion, Observaciones, idPerfume) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Formula (NombreFormula, VersionFormula, FechaCreacion, Observaciones, idPerfume) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection con = ConexionBD.obtenerConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -40,7 +40,7 @@ public class FormulaDAO {
                 Formula formula = new Formula();
                 formula.setIdFormula(rs.getInt("IdFormula"));
                 formula.setNombreFormula(rs.getString("NombreFormula"));
-                formula.setVersion(rs.getString("Version"));
+                formula.setVersion(rs.getString("VersionFormula"));
                 formula.setFechaCreacion(rs.getDate("FechaCreacion").toLocalDate());
                 formula.setObservaciones(rs.getString("Observaciones"));
                 formula.setIdPerfume(rs.getInt("idPerfume"));
@@ -51,7 +51,7 @@ public class FormulaDAO {
     }
 
     public void actualizar(Formula formula) throws SQLException {
-        String sql = "UPDATE Formula SET NombreFormula = ?, Version = ?, FechaCreacion = ?, Observaciones = ?, idPerfume = ? WHERE IdFormula = ?";
+        String sql = "UPDATE Formula SET NombreFormula = ?, VersionFormula = ?, FechaCreacion = ?, Observaciones = ?, idPerfume = ? WHERE IdFormula = ?";
 
         try (Connection con = ConexionBD.obtenerConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
