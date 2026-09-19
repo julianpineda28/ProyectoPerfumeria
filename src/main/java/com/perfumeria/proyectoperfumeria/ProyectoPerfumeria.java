@@ -32,7 +32,7 @@ public class ProyectoPerfumeria {
         nuevo.setUsuario("pruebaUser");
         nuevo.setContrasena("clave123");
         nuevo.setRol("Vendedor");
-        dao.insertar(nuevo);
+        // dao.insertar(nuevo); // ya se probo antes, se comenta para evitar duplicados
 
         List<Usuario> lista = dao.consultarTodos();
         for (Usuario u : lista) {
@@ -50,7 +50,7 @@ public class ProyectoPerfumeria {
         nuevo.setTipo("Eau de Toilette");
         nuevo.setPrecio(99000.0);
         nuevo.setFechaRegistro(LocalDate.now());
-        dao.insertar(nuevo);
+        // dao.insertar(nuevo); // ya se probo antes
 
         List<Perfume> lista = dao.consultarTodos();
         for (Perfume p : lista) {
@@ -67,7 +67,7 @@ public class ProyectoPerfumeria {
         nuevo.setUnidadMedida("ml");
         nuevo.setCantidadDisponible(150.0);
         nuevo.setEstado("disponible");
-        dao.insertar(nuevo);
+        // dao.insertar(nuevo); // ya se probo antes
 
         List<Insumo> lista = dao.consultarTodos();
         for (Insumo i : lista) {
@@ -84,8 +84,8 @@ public class ProyectoPerfumeria {
         nueva.setVersion("1.0");
         nueva.setFechaCreacion(LocalDate.now());
         nueva.setObservaciones("Formula creada para pruebas");
-        nueva.setIdPerfume(1); // usa el id 1 que ya existe (Aura de Noche)
-        dao.insertar(nueva);
+        nueva.setIdPerfume(1);
+        dao.insertar(nueva); // primera vez, se deja activo
 
         List<Formula> lista = dao.consultarTodos();
         for (Formula f : lista) {
@@ -101,9 +101,9 @@ public class ProyectoPerfumeria {
         nueva.setFechaOrden(LocalDate.now());
         nueva.setEstado("pendiente");
         nueva.setObservaciones("Orden de prueba");
-        nueva.setIdCliente(1); // Laura Gómez
-        nueva.setIdUsuario(1); // Nestor Fonseca
-        dao.insertar(nueva);
+        nueva.setIdCliente(1);
+        nueva.setIdUsuario(1);
+        dao.insertar(nueva); // primera vez, se deja activo
 
         List<Orden> lista = dao.consultarTodos();
         for (Orden o : lista) {
@@ -116,10 +116,10 @@ public class ProyectoPerfumeria {
         DetalleFormulaDAO dao = new DetalleFormulaDAO();
 
         DetalleFormula nuevo = new DetalleFormula();
-        nuevo.setIdFormula(1); // Formula Aura de Noche
-        nuevo.setIdInsumo(1); // Esencia de Sandalo
+        nuevo.setIdFormula(1);
+        nuevo.setIdInsumo(1);
         nuevo.setCantidad(25.0);
-        dao.insertar(nuevo);
+        dao.insertar(nuevo); // primera vez, se deja activo
 
         List<DetalleFormula> lista = dao.consultarTodos();
         for (DetalleFormula d : lista) {
@@ -132,10 +132,10 @@ public class ProyectoPerfumeria {
         DetalleOrdenDAO dao = new DetalleOrdenDAO();
 
         DetalleOrden nuevo = new DetalleOrden();
-        nuevo.setIdOrden(1); // orden ya existente
-        nuevo.setIdPerfume(1); // Aura de Noche
+        nuevo.setIdOrden(1);
+        nuevo.setIdPerfume(1);
         nuevo.setCantidad(2);
-        dao.insertar(nuevo);
+        dao.insertar(nuevo); // primera vez, se deja activo
 
         List<DetalleOrden> lista = dao.consultarTodos();
         for (DetalleOrden d : lista) {
